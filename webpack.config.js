@@ -2,15 +2,15 @@
  * @Author: 柿子
  * @Date:   2017-07-01 00:04:43
  * @Last Modified by:   柿子
- * @Last Modified time: 2017-07-01 22:13:35
+ * @Last Modified time: 2017-07-03 01:29:37
  */
 var webpack = require('webpack')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 var HtmlWebpackPlugin = require('html-webpack-plugin')
-// 环境变量配置  dev/ online
+    // 环境变量配置  dev/ online
 var WEBPACK_ENV = process.env.WEBPACK_ENV || 'dev'
 
-    //获取html-webpack
+//获取html-webpack
 var getHtmlConfig = function(name) {
     return {
         template: './src/view/' + name + '.html',
@@ -28,7 +28,7 @@ var config = {
     },
     output: {
         path: './dist',
-        publicPath:'/dist',
+        publicPath: '/dist',
         filename: 'js/[name].js',
     },
     external: {
@@ -37,11 +37,12 @@ var config = {
     module: {
         loaders: [
             { test: /\.css$/, loader: ExtractTextPlugin.extract("style-loader", "css-loader") },
-            {test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/, loader: 'url-loader?limit=20000&name=resource/[name].[ext]'},
+            { test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/, loader: 'url-loader?limit=20000&name=resource/[name].[ext]' },
         ]
     },
-    resolve : {
-        alias : {
+    resolve: {
+        alias: {
+            node_modules: __dirname + '/node_modules',
             util: __dirname + '/src/util',
             page: __dirname + '/src/page',
             service: __dirname + '/src/service',
@@ -61,8 +62,8 @@ var config = {
         new HtmlWebpackPlugin(getHtmlConfig('login')),
     ]
 }
-if('dev' == WEBPACK_ENV){
-    config.entry.commons.publicPathsh('webpack-dev-server/client?http://localhost:8088/')
+if ('dev' == WEBPACK_ENV) {
+    config.entry.commons.push('webpack-dev-server/client?http://localhost:8088/')
 }
 
 module.exports = config
