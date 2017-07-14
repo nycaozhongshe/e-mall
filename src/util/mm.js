@@ -2,7 +2,7 @@
  * @Author: 柿子
  * @Date:   2017-07-01 20:20:47
  * @Last Modified by:   柿子
- * @Last Modified time: 2017-07-03 01:58:32
+ * @Last Modified time: 2017-07-03 02:25:29
  */
 
 'use strict';
@@ -62,7 +62,7 @@ var _mm = {
          return result
     },
     //表单验证
-    validata : function(valuefa，type){
+    validata : function(value,type){
         var value = $.trim(value)
         //非空验证
         if('require' ===type){
@@ -84,6 +84,6 @@ var _mm = {
     //调到主页
     goHome: function() {
         window.location.href = './index.html'
-    },
+    }
 }
 module.exports = _mm
